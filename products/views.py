@@ -56,3 +56,5 @@ class ProductDetailsView(generics.RetrieveUpdateAPIView):
             if self.request.method in permissions.SAFE_METHODS:
                 return [AllowAny()]
             return super().get_permissions()
+from django.shortcuts import render
+
