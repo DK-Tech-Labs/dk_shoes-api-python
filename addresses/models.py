@@ -5,7 +5,8 @@ class Address(models.Model):
 
     street = models.CharField(max_length=255)
     number = models.CharField(max_length=50)
-    po = models.CharField(max_length=20)
+    # Mudamos de PO para POSTAL
+    postal = models.CharField(max_length=20) 
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)

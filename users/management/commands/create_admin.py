@@ -34,7 +34,7 @@ class Command(BaseCommand):
         new_address = Address.objects.create(
             street="modelUser",
             number="modelUser",
-            po="modelUser",
+            postal="modelUser",
             city="modelUser",
             country="modelUser",
             state="modelUser",
