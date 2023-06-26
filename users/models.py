@@ -9,8 +9,6 @@ class User(AbstractUser):
 
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     email = models.EmailField(max_length=255, unique=True)
-    # Futuramente mudar está opção de is seller
-    is_seller = models.BooleanField(default=False)
     cart = models.OneToOneField(
         "carts.Cart", on_delete=models.CASCADE, related_name="user"
     )

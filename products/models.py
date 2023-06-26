@@ -10,10 +10,6 @@ class Product(models.Model):
     stock = models.IntegerField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
     availability = models.BooleanField(default=True)
-    # futaramente retirar o campo seller
-    seller = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="products"
-    )
 
     # on delete deverar deletar apenas o product
     category = models.ForeignKey(
