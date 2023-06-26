@@ -23,7 +23,6 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "is_superuser",
-            "is_seller",
             "cart",
             "address",
         ]
@@ -53,9 +52,8 @@ class UserSerializer(serializers.ModelSerializer):
         if address_data:
             address = Address.objects.create(**address_data)
             validated_data["address"] = address
-        if validated_data.__contains__("is_superuser"):
-            if validated_data["is_superuser"] == True:
-                return User.objects.create_superuser(**validated_data)
+        if validated_data.__contains__("is_superuser") and validated_data["is_superuser"] == True:
+            return User.objects.create_superuser(**validated_data)
 
         return User.objects.create_user(**validated_data)
 
@@ -63,7 +61,7 @@ class UserSerializer(serializers.ModelSerializer):
         password = validated_data.pop("password", None)
 
         for key, value in validated_data.items():
-            if key == "is_seller" and value == False:
+            """ if key == "is_seller" and value == False:
                 user = instance
 
                 if user.is_seller:
@@ -99,7 +97,7 @@ class UserSerializer(serializers.ModelSerializer):
                                 )
                             if not in_progress_order_found:
                                 user.is_seller = False
-                                user.save()
+                                user.save() """
             setattr(instance, key, value)
 
         if password:

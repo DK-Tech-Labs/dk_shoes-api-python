@@ -8,13 +8,14 @@ from drf_spectacular.utils import extend_schema
     description="This endpoint allows you to login and obtain a JWT token pair.",
     tags=["Login"]
 )
+
 class LoginView(TokenObtainPairView):
+    # como pegar o usuário pelo email enviado
+    # caso o campo is_active seja falso mudar para verdadeiro
     pass
 
 urlpatterns = [
     path("users/login/", LoginView.as_view()),
     path("users/", views.UserView.as_view()),
     path("users/<str:pk>/", views.UserDetailView.as_view()),
-    path("users/<str:pk>/seller/", views.UserDetailView.as_view()),
-    path("users/activate/<str:pk>/", views.UserActivateView.as_view())
 ]
